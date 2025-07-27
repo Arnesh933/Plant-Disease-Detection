@@ -14,27 +14,23 @@ def model_predict(image_path):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) 
     img = np.array(img)
     img = img.astype("float32")  
-    img = img / 255.0  # rescaling
-    img = img.reshape(1,H,W,C) #reshaping 
+    img = img / 255.0  
+    img = img.reshape(1,H,W,C) 
     
     prediction = np.argmax(model.predict(img),axis=-1)[0]
 
     return prediction
 
-
- 
-
 #Sidebar
 st.sidebar.title("Plant Disease Detection System for Sustainable Agriculture")
 app_mode = st.sidebar.selectbox("Select Page",["HOME","DISEASE RECOGNITION"])
-#app_mode = st.sidebar.selectbox("Select Page",["Home"," ","Disease Recognition"])
+
 
 # import Image from pillow to open images
 from PIL import Image
 img = Image.open(r"C:\Users\Manoj Jindal\Downloads\Model\Classification of plant diseases.jpg")
 
 # display image using streamlit
-
 st.image(img)
 
 #Main Page
@@ -48,10 +44,8 @@ elif(app_mode=="DISEASE RECOGNITION"):
     
    
     if test_image is not None:
-        # Define the save path
         save_path = os.path.join(os.getcwd(), test_image.name)
         print(save_path)
-        # Save the file to the working directory
         with open(save_path, "wb") as f:
             f.write(test_image.getbuffer())
 
