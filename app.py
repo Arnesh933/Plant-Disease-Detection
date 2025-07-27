@@ -7,7 +7,7 @@ import os
 
 # Load and preprocess the image
 def model_predict(image_path):
-    model = tf.keras.models.load_model(r"C:\Users\Manoj Jindal\Downloads\Model\best_vgg16_plant_disease.keras")
+    model = tf.keras.models.load_model(r"best_vgg16_plant_disease.keras")
     img = cv2.imread(image_path)  # read the file and convert into array
     H,W,C = 224,224,3
     img = cv2.resize(img, (H, W)) 
@@ -28,7 +28,7 @@ app_mode = st.sidebar.selectbox("Select Page",["HOME","DISEASE RECOGNITION"])
 
 # import Image from pillow to open images
 from PIL import Image
-img = Image.open(r"C:\Users\Manoj Jindal\Downloads\Model\Classification of plant diseases.jpg")
+img = Image.open(r"Classification of plant diseases.jpg")
 
 # display image using streamlit
 st.image(img)
